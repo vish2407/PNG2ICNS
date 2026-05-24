@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PNG → ICNS</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+
+<header class="shell-header">
+  <div class="shell-header__left">
+    <span class="shell-header__product">Mac icon creator</span>
+  </div>
+  <div class="shell-header__right">
+    <span class="shell-header__tag">Customize and create your own macOS icons</span>
+  </div>
+</header>
+
+<main>
+  <div class="card">
+    <div class="card-header">
+      <div class="logo">🎨</div>
+      <div>
+        <div class="title">Convert PNG to ICNS</div>
+        <div class="subtitle">squircle · 82% canvas · centroid detect · 11 sizes</div>
+      </div>
+    </div>
+
+    <div class="drop-zone" id="drop-zone">
+      <span class="drop-icon">⬆️</span>
+      <div class="drop-label">Drop PNG files here</div>
+      <div class="drop-sub">or click to select · multiple files supported</div>
+      <input type="file" id="file-input" accept="image/png" multiple>
+    </div>
+
+    <div class="batch-list" id="batch-list"></div>
+
+    <div class="preview-wrap" id="preview-wrap">
+      <img class="preview-thumb" id="preview-thumb" src="" alt="">
+      <div class="preview-info">
+        <div class="preview-name" id="preview-name"></div>
+        <div class="preview-size" id="preview-size"></div>
+      </div>
+      <button class="clear-btn" id="clear-btn" title="Remove">✕</button>
+    </div>
+
+    <div class="progress-wrap" id="progress-wrap">
+      <div class="progress-label">
+        <span id="progress-text">Processing…</span>
+        <span id="progress-pct">0%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <button class="convert-btn" id="convert-btn">Convert &amp; Save to Downloads</button>
+  </div>
+</main>
+
+<footer class="shell-footer">
+  <span>Runs entirely in your browser — no uploads, no server.</span>
+  <span class="shell-footer__right">Made with ❤️ by Vishnu</span>
+</footer>
+
+<div class="toast" id="toast">
+  <span class="toast-icon" id="toast-icon"></span>
+  <span id="toast-msg"></span>
+</div>
+
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>
