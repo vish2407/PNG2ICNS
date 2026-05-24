@@ -1,6 +1,6 @@
 # Mac Icon Creator
 
-A browser-based tool for creating custom macOS `.icns` icon files from your PNG artwork. Compose your image onto a professional squircle template, generate all 11 required icon sizes, and apply instantly to apps, folders, or files — entirely in the browser, no uploads or server needed.
+A browser-based tool for creating custom macOS `.icns` icon files from your PNG artwork. Compose your image onto a professional squircle template, generate all 11 required icon sizes, and apply instantly to apps, folders, or files — entirely in the browser, no uploads needed.
 
 ## Features
 
@@ -9,7 +9,7 @@ A browser-based tool for creating custom macOS `.icns` icon files from your PNG 
 - **Live preview** — see exactly how your icon will look before converting
 - **Generates all 11 icon sizes** (16px → 1024px) required for macOS
 - **One-click download** — ready-to-use `.icns` files saved directly to your Downloads folder
-- **100% browser-based** — no uploads, no server, no tracking
+- **100% browser-based** — no uploads, no tracking
 - **IBM Carbon design** — clean, professional interface using IBM Plex fonts and Carbon color palette
 
 ## Getting Started
