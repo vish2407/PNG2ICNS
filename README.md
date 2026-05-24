@@ -1,15 +1,16 @@
-# PNG → ICNS
+# Mac Icon Creator
 
-A browser-based tool for converting PNG images into macOS `.icns` icon files — no server, no uploads, everything runs locally in the browser.
+A browser-based tool for creating custom macOS `.icns` icon files from your PNG artwork. Compose your image onto a professional squircle template, generate all 11 required icon sizes, and apply instantly to apps, folders, or files — entirely in the browser, no uploads or server needed.
 
 ## Features
 
-- Drag-and-drop or click-to-select PNG files
-- Batch conversion (multiple files at once)
-- Automatic squircle masking (82% canvas, macOS-style rounded corners)
-- Centroid detection to center the artwork within the icon
-- Generates all 11 required icon sizes (16px → 1024px)
-- Downloads output directly to your browser's Downloads folder
+- **Drag-and-drop or click-to-select** PNG files (multiple files at once)
+- **Template-based composition** — your image is automatically centered and scaled on a macOS squircle background
+- **Live preview** — see exactly how your icon will look before converting
+- **Generates all 11 icon sizes** (16px → 1024px) required for macOS
+- **One-click download** — ready-to-use `.icns` files saved directly to your Downloads folder
+- **100% browser-based** — no uploads, no server, no tracking
+- **IBM Carbon design** — clean, professional interface using IBM Plex fonts and Carbon color palette
 
 ## Getting Started
 
@@ -36,35 +37,36 @@ Then open [http://localhost:5173](http://localhost:5173) in your browser.
 ```
 src/
 ├── types.ts       — shared TypeScript interfaces
-├── utils.ts       — loadImage, downloadBlob, formatBytes
-├── renderer.ts    — canvas rendering and bounds detection
+├── utils.ts       — image loading, download, formatting
+├── renderer.ts    — canvas rendering with template composition
 ├── converter.ts   — ICNS binary format assembly
 ├── ui.ts          — DOM interactions and event handlers
 ├── main.ts        — entry point
-└── styles.css     — all styles
+└── styles.css     — IBM Carbon-inspired styles
 ```
 
 ## How It Works
 
-1. **Template composition** — loads the macOS squircle template and composites your image centered on top
-2. **Aspect ratio preservation** — scales your image to 58.6% of the canvas while maintaining aspect ratio, ensuring safe padding around edges
-3. **ICNS assembly** — generates all 11 required icon sizes and packs them into the binary ICNS container format with proper headers
+1. **Template composition** — draws the macOS squircle background template at each target size
+2. **Image scaling** — scales your artwork to 58.6% of the canvas (600px at 1024px size) with aspect ratio preserved, centered
+3. **Live preview** — renders a 256px composite so you see the result before converting
+4. **ICNS assembly** — generates all 11 required icon sizes and packs into binary ICNS format with proper headers
 
 ## Icon Sizes Generated
 
-| OSType | Size |
-|--------|------|
-| `icp4` | 16×16 |
-| `ic11` | 32×32 @2x |
-| `icp5` | 32×32 |
-| `ic12` | 64×64 @2x |
-| `icp6` | 64×64 |
-| `ic07` | 128×128 |
-| `ic13` | 256×256 @2x |
-| `ic08` | 256×256 |
-| `ic14` | 512×512 @2x |
-| `ic09` | 512×512 |
-| `ic10` | 1024×1024 |
+| OSType | Size | Use case |
+|--------|------|----------|
+| `icp4` | 16×16 | System icons, menus |
+| `ic11` | 32×32 @2x | Retina 16×16 |
+| `icp5` | 32×32 | Desktop, folders |
+| `ic12` | 64×64 @2x | Retina 32×32 |
+| `icp6` | 64×64 | Preferences, utilities |
+| `ic07` | 128×128 | Cover Flow |
+| `ic13` | 256×256 @2x | Retina 128×128 |
+| `ic08` | 256×256 | Finder, Spotlight |
+| `ic14` | 512×512 @2x | Retina 256×256 |
+| `ic09` | 512×512 | App Store, Launchpad |
+| `ic10` | 1024×1024 | macOS Big Sur+ native size |
 
 ## How to Apply an Icon in macOS
 
@@ -109,8 +111,15 @@ cp ~/Downloads/MyIcon.icns /Applications/MyApp.app/Contents/Resources/AppIcon.ic
 ### Troubleshooting
 
 - **Icon doesn't change:** Try logging out and back in, or restart Finder with `killall Finder`
-- **Icon reverts:** Some apps store their icon in the code signature — custom icons may revert after updates
-- **Permission denied:** Run as admin or check file permissions with `ls -la`
+- **Icon reverts:** Some apps store their icon in code signature — custom icons may revert after updates. Use `codesign --remove-signature /Applications/MyApp.app` (at your own risk)
+- **Permission denied:** Right-click → Open With → Get Info, or check file permissions with `ls -la`
+
+## Tech Stack
+
+- **Build**: [Vite](https://vitejs.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/) (strict mode)
+- **Design**: [IBM Carbon](https://www.carbondesignsystem.com/) colors & [IBM Plex](https://www.ibm.com/plex) fonts
+- **Canvas**: Native HTML5 Canvas API for image composition
 
 ## License
 
